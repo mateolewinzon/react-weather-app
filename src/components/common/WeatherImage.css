@@ -1,0 +1,21 @@
+.image-lg {
+  width: 20vw;
+}
+
+@media screen and (min-width: 400px) {
+  .image-lg {
+    width: 18vw;
+  }
+}
+
+@media screen and (min-width: 740px) {
+  .image-lg {
+    width: 15vw;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .image-lg {
+    width: 10vw;
+  }
+}

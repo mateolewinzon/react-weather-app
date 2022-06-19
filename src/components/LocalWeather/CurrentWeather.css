@@ -1,0 +1,39 @@
+.current-temp {
+  font-size: 18vw;
+  margin: 0;
+  line-height: 100%;
+  display: inline;
+}
+
+.current-temp-unit {
+  display: inline;
+  font-size: 10vw;
+  opacity: 70%;
+}
+
+@media screen and (min-width: 400px) {
+  .current-temp {
+    font-size: 16vw;
+  }
+  .current-temp-unit {
+    font-size: 8vw;
+  }
+}
+
+@media screen and (min-width: 740px) {
+  .current-temp {
+    font-size: 15vw;
+  }
+  .current-temp-unit {
+    font-size: 6vw;
+  }
+}
+
+@media screen and (min-width: 1200px) {
+  .current-temp {
+    font-size: 10vw;
+  }
+  .current-temp-unit {
+    font-size: 4vw;
+  }
+}

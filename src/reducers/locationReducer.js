@@ -1,5 +1,6 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
+  fetchLocationCityName,
   fetchLocationWithIp,
   setExactLocation,
 } from "../actions/locationActions";
@@ -9,6 +10,7 @@ const initialState = {
     approximate: null,
     exact: null,
   },
+  localName: null,
   isLoading: false,
   error: null,
 };
@@ -19,13 +21,20 @@ const locationReducer = createReducer(initialState, (builder) => {
       state.isLoading = true;
     })
     .addCase(fetchLocationWithIp.fulfilled, (state, action) => {
+      state.isLoading = false;
       const { data, error } = action.payload;
 
       if (data) {
         state.currentLocation.approximate = data;
       } else {
-        state.error = error;
+        state.error = error || "unknown_error";
       }
+    })
+    .addCase(fetchLocationCityName.fulfilled, (state, action)=> {
+      const {data, error} = action.payload
+      if (data) {
+        state.localName = data[0].name
+      } 
     })
     .addCase(setExactLocation, (state, action) => {
       const coords = action.payload;
@@ -38,7 +47,8 @@ export const selectLocation = (state) => {
   return {
     ...locationState,
     currentLocation:
-      locationState.currentLocation.exact || locationState.currentLocation.approximate,
+      locationState.currentLocation.exact ||
+      locationState.currentLocation.approximate,
   };
 };
 

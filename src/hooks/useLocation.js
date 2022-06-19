@@ -1,14 +1,22 @@
-import { fetchLocationWithIp, setExactLocation } from "../actions/locationActions";
+import {
+  fetchLocationWithIp,
+  setExactLocation,
+} from "../actions/locationActions";
 import { store } from "../app/store";
 
 export const useLocation = () => {
   const getLocation = () => {
-    store.dispatch(fetchLocationWithIp())
+    store.dispatch(fetchLocationWithIp());
 
     navigator.geolocation.getCurrentPosition((position, error) => {
-      console.log(position,error)
+      console.log(position)
       if (position?.coords) {
-        store.dispatch(setExactLocation({lat: position.coords.latitude, lon: position.coords.longitude}))
+        store.dispatch(
+          setExactLocation({
+            lat: position.coords.latitude,
+            lon: position.coords.longitude,
+          })
+        );
       }
     });
   };
