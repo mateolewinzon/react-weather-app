@@ -30,14 +30,15 @@ const locationReducer = createReducer(initialState, (builder) => {
         state.error = error || "unknown_error";
       }
     })
-    .addCase(fetchLocationCityName.fulfilled, (state, action)=> {
-      const {data, error} = action.payload
+    .addCase(fetchLocationCityName.fulfilled, (state, action) => {
+      const { data } = action.payload;
       if (data) {
-        state.localName = data[0].name
-      } 
+        state.localName = data[0].name;
+      }
     })
     .addCase(setExactLocation, (state, action) => {
       const coords = action.payload;
+      state.localName = null;
       state.currentLocation.exact = coords;
     });
 });

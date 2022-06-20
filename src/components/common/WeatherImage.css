@@ -2,6 +2,10 @@
   width: 20vw;
 }
 
+.image-sm {
+  width: 100vw;
+}
+
 @media screen and (min-width: 400px) {
   .image-lg {
     width: 18vw;

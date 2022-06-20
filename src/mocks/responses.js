@@ -25,4 +25,5 @@ export const mockLocalWeather = {
   }),
 };
 
+
 export const mockLocalCityName = [{ name: "Buenos Aires" }];

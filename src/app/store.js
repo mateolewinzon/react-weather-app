@@ -1,11 +1,12 @@
 import { configureStore } from '@reduxjs/toolkit';
-import weatherReducer from '../reducers/weatherReducer';
+import localWeatherReducer from '../reducers/localWeatherReducer';
+import selectedCitiesReducer from '../reducers/selectedCitiesReducer';
 import locationReducer from '../reducers/locationReducer';
-
 
 export const store = configureStore({
   reducer: {
-    weather: weatherReducer,
+    localWeather: localWeatherReducer,
+    selectedCities: selectedCitiesReducer,
     location: locationReducer
   },
 });

@@ -2,15 +2,17 @@ import {
   fetchLocationWithIp,
   setExactLocation,
 } from "../actions/locationActions";
+import {resetLocalWeather} from "../actions/weatherActions";
+
 import { store } from "../app/store";
 
 export const useLocation = () => {
   const getLocation = () => {
     store.dispatch(fetchLocationWithIp());
 
-    navigator.geolocation.getCurrentPosition((position, error) => {
-      console.log(position)
+    navigator.geolocation.getCurrentPosition((position) => {
       if (position?.coords) {
+        store.dispatch(resetLocalWeather())
         store.dispatch(
           setExactLocation({
             lat: position.coords.latitude,

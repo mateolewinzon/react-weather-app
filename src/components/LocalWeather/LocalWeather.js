@@ -5,14 +5,14 @@ import { fetchLocationCityName } from "../../actions/locationActions";
 import { fetchLocalWeather } from "../../actions/weatherActions";
 import { useLocation } from "../../hooks/useLocation";
 import { selectLocation } from "../../reducers/locationReducer";
-import { selectWeather } from "../../reducers/weatherReducer";
+import { selectWeather } from "../../reducers/localWeatherReducer";
 import LoadingSpinner from "../common/LoadingSpinner";
 import CurrentWeatherBox from "./CurrentWeather";
 import Forecast from "./Forecast";
 
 const LocalWeather = () => {
   const dispatch = useDispatch();
-  const { localWeather } = useSelector(selectWeather);
+  const localWeather = useSelector(selectWeather);
   const { currentLocation, localName } = useSelector(selectLocation);
   const { getLocation } = useLocation();
 
@@ -30,12 +30,13 @@ const LocalWeather = () => {
     }
   }, [localWeather, currentLocation, localName]);
 
+
   return (
     <Container>
       {localWeather.isLoading ? (
         <LoadingSpinner size="lg" />
       ) : (
-        <Row className="p-4">
+       localWeather.data && <Row className="pt-4 text-center">
           <Row>
             <h2>Clima en {localName}</h2>
           </Row>

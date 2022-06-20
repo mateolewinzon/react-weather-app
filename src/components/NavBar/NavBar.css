@@ -1,3 +1,14 @@
 .nav-bar{
     background-color: rgb(75, 75, 75)
 }
+
+.search-result {
+    cursor: pointer;
+}
+.search-result:hover {
+    background-color: rgb(214, 214, 214);
+}
+
+.search-result:active {
+    background-color: rgb(168, 168, 168);
+}

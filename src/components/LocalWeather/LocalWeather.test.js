@@ -1,16 +1,7 @@
 import { store } from "../../app/store";
 import { MAX_TEMP, MIN_TEMP, WEATHER_IN } from "../../config/texts";
-import {
-  mockLocalCityName,
-  mockLocalWeather,
-  mockLocation,
-} from "../../mocks/responses";
-import {
-  screen,
-  render,
-  waitFor,
-  queryAllByTestId,
-} from "../../test-utils/testing-library-utils";
+import { mockLocalCityName, mockLocalWeather } from "../../mocks/responses";
+import { screen, render } from "../../test-utils/testing-library-utils";
 import convertTempFromK from "../../utils/convertTemp";
 import LocalWeather from "./LocalWeather";
 
@@ -35,8 +26,14 @@ test("shows current local temperature with drawing and city name", async () => {
 test("shows local 5 day forecast; with max/min temp and small icon", async () => {
   render(<LocalWeather />, { store });
 
-  const forecastDayMax = await screen.findAllByText(MIN_TEMP, {exact: false})
-  await screen.findAllByText(MIN_TEMP, {exact: false})
+  const forecastDayMax = await screen.findAllByText(MIN_TEMP, { exact: false });
+  const forecastDayMin = await screen.findAllByText(MAX_TEMP, { exact: false });
 
-  expect(forecastDayMax).toHaveLength(5)
+  expect(forecastDayMax).toHaveLength(5);
+  expect(forecastDayMin).toHaveLength(5);
+
+  const forecastIcon = await screen.findAllByRole("img", {
+    name: mockLocalWeather.daily[0].weather[0].icon,
+  });
+  expect(forecastIcon).toHaveLength(5);
 });

@@ -1,13 +1,13 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import convertTemp from "../../utils/convertTemp";
-import { selectWeather } from "../../reducers/weatherReducer";
+import { selectWeather } from "../../reducers/localWeatherReducer";
 import WeatherImage from "../common/WeatherImage";
 import "./CurrentWeather.css";
 
 const CurrentWeatherBox = () => {
-  const { localWeather } = useSelector(selectWeather);
+  const localWeather = useSelector(selectWeather);
 
   return (
     <Row className="justify-content-center">
