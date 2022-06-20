@@ -1,11 +1,10 @@
 import { configureStore } from "@reduxjs/toolkit";
 import { render as rtlRender } from "@testing-library/react";
 import { Provider } from "react-redux";
-import { store } from "../app/store";
 
 const renderWithStore = (
   ui,
-  { preloadedState, store, ...renderOptions } = {}
+  { store, ...renderOptions } = {}
 ) => {
   function Wrapper({ children }) {
     return <Provider store={store}>{children}</Provider>;

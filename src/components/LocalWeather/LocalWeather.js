@@ -8,6 +8,7 @@ import { selectLocation } from "../../reducers/locationReducer";
 import { selectWeather } from "../../reducers/weatherReducer";
 import LoadingSpinner from "../common/LoadingSpinner";
 import CurrentWeatherBox from "./CurrentWeather";
+import Forecast from "./Forecast";
 
 const LocalWeather = () => {
   const dispatch = useDispatch();
@@ -28,24 +29,19 @@ const LocalWeather = () => {
       dispatch(fetchLocalWeather(currentLocation));
     }
   }, [localWeather, currentLocation, localName]);
+
   return (
     <Container>
       {localWeather.isLoading ? (
         <LoadingSpinner size="lg" />
       ) : (
-        <>
-          <Row className="p-4">
-            {localName && (
-              <Row>
-                <h2>{localName}</h2>
-              </Row>
-            )}
-            <Row className="justify-content-center">
-              <CurrentWeatherBox />
-            </Row>
-            <Row className="justify-content-center">forecast</Row>
+        <Row className="p-4">
+          <Row>
+            <h2>Clima en {localName}</h2>
           </Row>
-        </>
+          <CurrentWeatherBox />
+          <Forecast />
+        </Row>
       )}
     </Container>
   );

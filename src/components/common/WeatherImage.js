@@ -9,7 +9,7 @@ const WeatherImage = ({ weatherData, size }) => {
       ? `images/weather/${getLargeWeatherImage(weatherData)}.png`
       : weatherData.weather[0].id;
 
-  return <Image className={`image-${size}`} src={src} />;
+  return <Image alt={getLargeWeatherImage(weatherData)} className={`image-${size}`} src={src} />;
 };
 
 export default WeatherImage;

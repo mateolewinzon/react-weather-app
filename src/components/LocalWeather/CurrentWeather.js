@@ -1,5 +1,5 @@
 import React from "react";
-import { Col } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
 import convertTemp from "../../utils/convertTemp";
 import { selectWeather } from "../../reducers/weatherReducer";
@@ -10,7 +10,7 @@ const CurrentWeatherBox = () => {
   const { localWeather } = useSelector(selectWeather);
 
   return (
-    <>
+    <Row className="justify-content-center">
       <Col xs="auto">
         <WeatherImage size="lg" weatherData={localWeather.data.current} />
       </Col>
@@ -20,7 +20,7 @@ const CurrentWeatherBox = () => {
         </div>
         <div className="current-temp-unit">°C</div>
       </Col>
-    </>
+    </Row>
   );
 };
 
