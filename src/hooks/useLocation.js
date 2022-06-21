@@ -3,7 +3,6 @@ import {
   setExactLocation,
 } from "../actions/locationActions";
 import {resetLocalWeather} from "../actions/localWeatherActions";
-
 import { store } from "../app/store";
 
 export const useLocation = () => {

@@ -1,9 +1,9 @@
+import { screen, render } from "../../test-utils/testing-library-utils";
+import LocalWeather from "./LocalWeather";
 import { store } from "../../app/store";
+import convertTempFromK from "../../utils/convertTemp";
 import { MAX_TEMP, MIN_TEMP, WEATHER_IN } from "../../config/texts";
 import { mockLocalCityName, mockLocalWeather } from "../../mocks/responses";
-import { screen, render } from "../../test-utils/testing-library-utils";
-import convertTempFromK from "../../utils/convertTemp";
-import LocalWeather from "./LocalWeather";
 
 test("shows current local temperature with drawing and city name", async () => {
   render(<LocalWeather />, { store: store });

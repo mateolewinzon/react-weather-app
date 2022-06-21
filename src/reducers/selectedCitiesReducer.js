@@ -1,11 +1,12 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
-    addCity,
+  addCity,
   clearSearch,
+  deleteCity,
   fetchCities,
 } from "../actions/selectedCitiesActions";
 
-const initialWeatherState = { isLoading: false, data: null, error: null };
+const initialWeatherState = { isLoading: false, weather: null, error: null };
 
 const initialState = {
   searchResults: [],
@@ -26,15 +27,28 @@ const selectedCitiesReducer = createReducer(initialState, (builder) => {
       state.searchResults = data;
     }
   });
-  builder.addCase(addCity, (state, action)=>{
-
-    if (state.selected.length < 5) {
-        state.selected = [...state.selected, action.payload]
-    } 
-  })
+  builder.addCase(addCity.pending, (state, action) => {
+    const cityIndex = state.selected.length;
+    const city = action.meta.arg;
+    state.selected[cityIndex] = {
+      ...initialWeatherState,
+      data: city,
+      loading: true,
+    };
+  });
+  builder.addCase(addCity.fulfilled, (state, action) => {
+    const { data, error } = action.payload;
+    const cityIndex = state.selected.length;
+    state.selected[cityIndex - 1] = {
+      loading: false,
+      data: { ...state.selected[cityIndex - 1].data, weather: data },
+    };
+  });
+  builder.addCase(deleteCity, (state, action) => {
+    state.selected.splice(action.payload, 1);
+  });
 });
 
-export const selectCitiesState = (state) =>
-  state.selectedCities;
+export const selectCitiesState = (state) => state.selectedCities;
 
 export default selectedCitiesReducer;

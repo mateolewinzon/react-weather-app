@@ -1,12 +1,6 @@
 import React from "react";
-import {
-  Container,
-  Form,
-  ListGroup,
-  Navbar as BootstrapNavBar,
-} from "react-bootstrap";
+import { Container, Navbar as BootstrapNavBar } from "react-bootstrap";
 import SearchBar from "./SearchBar";
-
 import { APP_TITLE } from "../../config/texts";
 import "./NavBar.css";
 

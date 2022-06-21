@@ -1,6 +1,6 @@
 import { createAsyncThunk, createAction } from "@reduxjs/toolkit";
 import { getCities } from "../services/citiesService";
-
+import { getWeather } from "../services/weatherService";
 
 export const fetchCities = createAsyncThunk(
   "selectedCities/searchCities",
@@ -12,4 +12,13 @@ export const fetchCities = createAsyncThunk(
 
 export const clearSearch = createAction("CLEAR_SEARCH");
 
-export const addCity = createAction("ADD_CITY")
+export const addCity = createAsyncThunk(
+  "selectedCities/fetchWeather",
+  async (city) => {
+    const { lat, lon } = city;
+    const response = await getWeather(lat, lon);
+    return response;
+  }
+);
+
+export const deleteCity = createAction("DELETE_CITY") 

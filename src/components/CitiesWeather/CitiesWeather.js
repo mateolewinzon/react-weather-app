@@ -1,21 +1,30 @@
 import React from "react";
-import { Col, Container, Row } from "react-bootstrap";
+import { Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
+import CityCard from "./City";
 import { selectCitiesState } from "../../reducers/selectedCitiesReducer";
-import CityCard from "./CityCard";
+import { CITIES_WEATHER } from "../../config/texts";
+
 
 const CitiesWeather = () => {
   const { selected } = useSelector(selectCitiesState);
+
+  const WeatherCardsData = [
+    ...selected,
+    ...new Array(5 - selected.length).fill({}),
+  ];
+
   return (
-    <Container className="p-4">
-      <Row className="justify-content-center">
-        {selected.map((city, index) => (
-          <Col xs='12' sm='6' md='4' lg='3' xl='2' >
-            <CityCard city={city} index={index} />
+    <Row className="justify-content-center p-4">
+      <Row className="justify-content-center">{CITIES_WEATHER}</Row>
+      <Row className="justify-content-center p-2">
+        {WeatherCardsData.map((city, index) => (
+          <Col key={index} xs="12" sm="6" md="4" lg="3" xl="2">
+            <CityCard cityIndex={index} city={city} />
           </Col>
         ))}
       </Row>
-    </Container>
+    </Row>
   );
 };
 

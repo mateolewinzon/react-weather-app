@@ -1,9 +1,9 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Col, Row } from "react-bootstrap";
 import { useSelector } from "react-redux";
-import convertTemp from "../../utils/convertTemp";
 import { selectWeather } from "../../reducers/localWeatherReducer";
 import WeatherImage from "../common/WeatherImage";
+import convertTemp from "../../utils/convertTemp";
 import "./CurrentWeather.css";
 
 const CurrentWeatherBox = () => {

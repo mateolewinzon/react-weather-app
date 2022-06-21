@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Spinner, Row } from "react-bootstrap";
+import { Spinner, Row } from "react-bootstrap";
 import "./LoadingSpinner.css";
 
 const LoadingSpinner = (size) => {

@@ -1,5 +1,5 @@
 import React, { useEffect } from "react";
-import { Container, Row, Col } from "react-bootstrap";
+import { Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLocationCityName } from "../../actions/locationActions";
 import { fetchLocalWeather } from "../../actions/localWeatherActions";
@@ -8,7 +8,7 @@ import { selectLocation } from "../../reducers/locationReducer";
 import { selectWeather } from "../../reducers/localWeatherReducer";
 import LoadingSpinner from "../common/LoadingSpinner";
 import CurrentWeatherBox from "./CurrentWeather";
-import Forecast from "./Forecast";
+import Forecast from "./ForecastRow";
 
 const LocalWeather = () => {
   const dispatch = useDispatch();
@@ -30,21 +30,18 @@ const LocalWeather = () => {
     }
   }, [localWeather, currentLocation, localName]);
 
-
-  return (
-    <Container>
-      {localWeather.isLoading ? (
-        <LoadingSpinner size="lg" />
-      ) : (
-       localWeather.data && <Row className="pt-4 text-center">
-          <Row>
-            <h2>Clima en {localName}</h2>
-          </Row>
-          <CurrentWeatherBox />
-          <Forecast />
+  return localWeather.isLoading ? (
+    <LoadingSpinner size="lg" />
+  ) : (
+    localWeather.data && (
+      <Row className="pt-4 text-center">
+        <Row>
+          <h2>Clima en {localName}</h2>
         </Row>
-      )}
-    </Container>
+        <CurrentWeatherBox />
+        <Forecast />
+      </Row>
+    )
   );
 };
 

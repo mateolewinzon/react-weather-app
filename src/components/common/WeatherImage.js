@@ -1,7 +1,7 @@
 import React from "react";
 import { Image } from "react-bootstrap";
-import { URL_PARAMS } from "../../config/endpoints";
 import getLargeWeatherImage from "../../utils/getLargeWeatherImage";
+import { URL_PARAMS } from "../../config/endpoints";
 import "./WeatherImage.css";
 
 const WeatherImage = ({ weatherData, size }) => {
