@@ -25,5 +25,6 @@ export const mockLocalWeather = {
   }),
 };
 
-
 export const mockLocalCityName = [{ name: "Buenos Aires" }];
+
+export const mockCitySearchResults = Array(5).fill({name: 'Buenos Aires', country: 'AR'})

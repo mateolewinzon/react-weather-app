@@ -1,5 +1,5 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { clearSearch, fetchCities, fetchLocalWeather, resetLocalWeather } from "../actions/weatherActions";
+import { clearSearch, fetchCities, fetchLocalWeather, resetLocalWeather } from "../actions/localWeatherActions";
 
 const initialState = { isLoading: true, data: null, error: null };
 

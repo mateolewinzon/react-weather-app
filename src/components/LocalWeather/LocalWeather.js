@@ -2,7 +2,7 @@ import React, { useEffect } from "react";
 import { Container, Row, Col } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchLocationCityName } from "../../actions/locationActions";
-import { fetchLocalWeather } from "../../actions/weatherActions";
+import { fetchLocalWeather } from "../../actions/localWeatherActions";
 import { useLocation } from "../../hooks/useLocation";
 import { selectLocation } from "../../reducers/locationReducer";
 import { selectWeather } from "../../reducers/localWeatherReducer";

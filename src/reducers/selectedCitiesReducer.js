@@ -1,13 +1,13 @@
 import { createReducer } from "@reduxjs/toolkit";
 import {
+    addCity,
   clearSearch,
   fetchCities,
-} from "../actions/weatherActions";
+} from "../actions/selectedCitiesActions";
 
 const initialWeatherState = { isLoading: false, data: null, error: null };
 
 const initialState = {
-  loading: false,
   searchResults: [],
   selected: [],
 };
@@ -23,10 +23,15 @@ const selectedCitiesReducer = createReducer(initialState, (builder) => {
   builder.addCase(fetchCities.fulfilled, (state, action) => {
     const { data, error } = action.payload;
     if (data) {
-        console.log(data)
       state.searchResults = data;
     }
   });
+  builder.addCase(addCity, (state, action)=>{
+
+    if (state.selected.length < 5) {
+        state.selected = [...state.selected, action.payload]
+    } 
+  })
 });
 
 export const selectCitiesState = (state) =>

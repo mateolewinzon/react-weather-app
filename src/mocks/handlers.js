@@ -2,10 +2,15 @@ import { rest } from "msw";
 import {
   IP_LOCATION_API_ENDPOINT,
   REVERSE_GEOCODING_ENDPOINT,
-  URL_PARAMS,
+  SEARCH_CITY_ENDPOINT,
   WEATHER_API_ENDPOINT,
 } from "../config/endpoints";
-import { mockLocalCityName, mockLocalWeather, mockLocation } from "./responses";
+import {
+  mockCitySearchResults,
+  mockLocalCityName,
+  mockLocalWeather,
+  mockLocation,
+} from "./responses";
 
 export const handlers = [
   rest.get(IP_LOCATION_API_ENDPOINT, (req, res, ctx) => {
@@ -17,5 +22,7 @@ export const handlers = [
   rest.get(REVERSE_GEOCODING_ENDPOINT, (req, res, ctx) => {
     return res(ctx.json(mockLocalCityName));
   }),
-  
+  rest.get(SEARCH_CITY_ENDPOINT, (req, res, ctx) => {
+    return res(ctx.json(mockCitySearchResults));
+  }),
 ];

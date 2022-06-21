@@ -2,7 +2,7 @@ import {
   fetchLocationWithIp,
   setExactLocation,
 } from "../actions/locationActions";
-import {resetLocalWeather} from "../actions/weatherActions";
+import {resetLocalWeather} from "../actions/localWeatherActions";
 
 import { store } from "../app/store";
 
