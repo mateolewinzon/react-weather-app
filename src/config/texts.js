@@ -1,5 +1,4 @@
 //Main page
-
 export const MIN_TEMP = "Min"
 export const MAX_TEMP = "Max"
 export const WEATHER_IN = "Clima en "
@@ -14,7 +13,6 @@ export const ERROR_FETCHING_CITY = 'Ha ocurrido un error al cargar las ciudades.
 export const ERROR_FETCHING_WEATHER = 'Ha ocurrido un error al cargar el clima.'
 
 //navbar
-
 export const APP_TITLE = "Weather App"
 export const SEARCH_CITY = "Buscar ciudad"
 export const SEARCH = "Search"

@@ -16,7 +16,7 @@ const Forecast = () => {
       <Row className="justify-content-center p-2">{FORECAST_5_DAY}</Row>
       <Row className="justify-content-center">
         {days.slice(0, 5).map((day, index) => (
-          <Col xs="2" className="p-0" key={index}>
+          <Col xs="2" className="forecast-col p-0" key={index}>
             <ForecastWeatherCard data={day} />
           </Col>
         ))}

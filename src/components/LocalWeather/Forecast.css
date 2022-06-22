@@ -5,3 +5,6 @@
     background-color: #49aae2;
     z-index: -10;
 }
+.forecast-col{
+    min-width: 60px
+}
