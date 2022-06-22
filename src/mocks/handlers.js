@@ -8,16 +8,16 @@ import {
 import {
   mockCitySearchResults,
   mockLocalCityName,
-  mockLocalWeather,
+  weatherData,
   mockLocation,
-} from "./responses";
+} from "./mockData";
 
 export const handlers = [
   rest.get(IP_LOCATION_API_ENDPOINT, (req, res, ctx) => {
     return res(ctx.json(mockLocation));
   }),
   rest.get(WEATHER_API_ENDPOINT, (req, res, ctx) => {
-    return res(ctx.json(mockLocalWeather));
+    return res(ctx.json(weatherData));
   }),
   rest.get(REVERSE_GEOCODING_ENDPOINT, (req, res, ctx) => {
     return res(ctx.json(mockLocalCityName));

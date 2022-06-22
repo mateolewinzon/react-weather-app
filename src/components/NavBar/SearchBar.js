@@ -6,12 +6,18 @@ import {
   clearSearch,
   addCity,
 } from "../../actions/selectedCitiesActions";
-import { SEARCH, SEARCH_CITY, TOO_MANY_CITIES } from "../../config/texts";
+import { store } from "../../app/store";
+import {
+  ERROR_FETCHING_CITY,
+  SEARCH,
+  SEARCH_CITY,
+  TOO_MANY_CITIES,
+} from "../../config/texts";
 import { selectCitiesState } from "../../reducers/selectedCitiesReducer";
 
 const SearchBar = () => {
   const dispatch = useDispatch();
-  const { searchResults, selected } = useSelector(selectCitiesState);
+  const { searchResults, selected, error } = useSelector(selectCitiesState);
   const [isDisabled, setDisabled] = useState(true);
   const [hideList, setHideList] = useState(false);
   const [text, setText] = useState("");
@@ -35,7 +41,7 @@ const SearchBar = () => {
     if (selected.length > 4) {
       return window.alert(TOO_MANY_CITIES);
     }
-    dispatch(addCity(result));
+    dispatch(addCity({ city: result, index: selected.length }));
   };
 
   return (
@@ -66,6 +72,11 @@ const SearchBar = () => {
               onClick={() => handleClickOnResult(result)}
             >{`${result.name}, ${result.country}`}</ListGroup.Item>
           ))}
+          {error && (
+            <ListGroup.Item className="search-result">
+              {ERROR_FETCHING_CITY}
+            </ListGroup.Item>
+          )}
         </ListGroup>
       )}
     </Form.Group>

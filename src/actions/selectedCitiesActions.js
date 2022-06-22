@@ -10,15 +10,15 @@ export const fetchCities = createAsyncThunk(
   }
 );
 
-export const clearSearch = createAction("CLEAR_SEARCH");
-
 export const addCity = createAsyncThunk(
   "selectedCities/fetchWeather",
-  async (city) => {
+  async ({city, index}) => {
     const { lat, lon } = city;
     const response = await getWeather(lat, lon);
     return response;
   }
 );
+
+export const clearSearch = createAction("CLEAR_SEARCH");
 
 export const deleteCity = createAction("DELETE_CITY") 

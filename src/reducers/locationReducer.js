@@ -21,14 +21,13 @@ const locationReducer = createReducer(initialState, (builder) => {
       state.isLoading = true;
     })
     .addCase(fetchLocationWithIp.fulfilled, (state, action) => {
-      state.isLoading = false;
       const { data, error } = action.payload;
-
       if (data) {
         state.currentLocation.approximate = data;
       } else {
-        state.error = error || "unknown_error";
+        state.error = error?.message || "unknown_error";
       }
+      state.isLoading = false;
     })
     .addCase(fetchLocationCityName.fulfilled, (state, action) => {
       const { data } = action.payload;
@@ -39,6 +38,7 @@ const locationReducer = createReducer(initialState, (builder) => {
     .addCase(setExactLocation, (state, action) => {
       const coords = action.payload;
       state.localName = null;
+      state.isLoading = false
       state.currentLocation.exact = coords;
     });
 });

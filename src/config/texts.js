@@ -9,6 +9,10 @@ export const CITIES_WEATHER = "Clima en ciudades del mundo"
 export const TOO_MANY_CITIES = "Ya agregaste 5 ciudades. Eliminá las otras si necesitás."
 export const DELETE = "Eliminar"
 
+export const ERROR_LOCAL_WEATHER = 'Ha ocurrido un error al cargar el clima local.'
+export const ERROR_FETCHING_CITY = 'Ha ocurrido un error al cargar las ciudades.'
+export const ERROR_FETCHING_WEATHER = 'Ha ocurrido un error al cargar el clima.'
+
 //navbar
 
 export const APP_TITLE = "Weather App"

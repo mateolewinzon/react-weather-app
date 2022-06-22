@@ -1,7 +1,7 @@
 import axios from "axios";
 
 export const get = async (endpoint) => {
-  const response = { data: {}, error: null };
+  const response = { data: null, error: null };
 
   try {
     const { data } = await axios.get(endpoint);
@@ -14,8 +14,7 @@ export const get = async (endpoint) => {
 };
 
 export const post = async (endpoint, body) => {
-  const response = { data: {}, error: null };
-
+  const response = { data: null, error: null };
   try {
     const { data } = await axios.post(endpoint, body);
     response.data = data;

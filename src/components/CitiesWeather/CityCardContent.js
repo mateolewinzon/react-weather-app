@@ -5,7 +5,7 @@ import convertTempFromK from "../../utils/convertTemp";
 
 const CardContent = ({ currentWeather }) => {
   return (
-    <Card.Body>
+    <Card.Body data-testid='selected-city-card'>
       <Row>
         <WeatherImage size="sm" weatherData={currentWeather} />
       </Row>

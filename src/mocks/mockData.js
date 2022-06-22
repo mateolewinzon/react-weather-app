@@ -3,7 +3,7 @@ export const mockLocation = {
   lon: -58.38,
 };
 
-export const mockLocalWeather = {
+export const weatherData = {
   current: {
     temp: 270,
     weather: [{ id: 800 }],
@@ -25,6 +25,8 @@ export const mockLocalWeather = {
   }),
 };
 
+export const mockAddedCityWeatherData = {name: 'Córdoba', weather: {current: {temp: 290, weather: [{icon: 'd10'}]}}}
+
 export const mockLocalCityName = [{ name: "Buenos Aires" }];
 
-export const mockCitySearchResults = Array(5).fill({name: 'Buenos Aires', country: 'AR'})
+export const mockCitySearchResults = Array(5).fill({name: 'Córdoba', country: 'AR'})

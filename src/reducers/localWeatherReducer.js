@@ -1,7 +1,10 @@
 import { createReducer } from "@reduxjs/toolkit";
-import { clearSearch, fetchCities, fetchLocalWeather, resetLocalWeather } from "../actions/localWeatherActions";
+import {
+  fetchLocalWeather,
+  resetLocalWeather,
+} from "../actions/localWeatherActions";
 
-const initialState = { isLoading: true, data: null, error: null };
+const initialState = { isLoading: false, data: null, error: null };
 
 const weatherReducer = createReducer(initialState, (builder) => {
   builder.addCase(fetchLocalWeather.pending, (state, action) => {
@@ -9,21 +12,18 @@ const weatherReducer = createReducer(initialState, (builder) => {
   });
   builder.addCase(fetchLocalWeather.fulfilled, (state, action) => {
     const { error, data } = action.payload;
-
     if (data) {
-      state.data = data
+      state.data = data;
     } else {
-      state.error = error.message || "unknown_error";
+      state.error = error?.message || "unknown_error";
     }
     state.isLoading = false;
   });
   builder.addCase(resetLocalWeather, (state) => {
-    state.data = null
-  })
-
+    state.data = null;
+  });
 });
 
 export const selectWeather = (state) => state.localWeather;
-
 
 export default weatherReducer;

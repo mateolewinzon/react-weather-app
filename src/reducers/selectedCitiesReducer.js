@@ -11,6 +11,7 @@ const initialWeatherState = { isLoading: false, weather: null, error: null };
 const initialState = {
   searchResults: [],
   selected: [],
+  error: null
 };
 
 const selectedCitiesReducer = createReducer(initialState, (builder) => {
@@ -18,18 +19,20 @@ const selectedCitiesReducer = createReducer(initialState, (builder) => {
     state.searchResults = [];
   });
   builder.addCase(fetchCities.pending, (state) => {
-    state.loading = true;
     state.searchResults = [];
   });
   builder.addCase(fetchCities.fulfilled, (state, action) => {
     const { data, error } = action.payload;
     if (data) {
       state.searchResults = data;
+      state.error = null
+    } else {
+      state.error = error.message || "unknown_error"
     }
   });
-  builder.addCase(addCity.pending, (state, action) => {
-    const cityIndex = state.selected.length;
-    const city = action.meta.arg;
+   builder.addCase(addCity.pending, (state, action) => {
+    const cityIndex = action.meta.arg.index
+    const city = action.meta.arg.city;
     state.selected[cityIndex] = {
       ...initialWeatherState,
       data: city,
@@ -38,11 +41,21 @@ const selectedCitiesReducer = createReducer(initialState, (builder) => {
   });
   builder.addCase(addCity.fulfilled, (state, action) => {
     const { data, error } = action.payload;
-    const cityIndex = state.selected.length;
-    state.selected[cityIndex - 1] = {
-      loading: false,
-      data: { ...state.selected[cityIndex - 1].data, weather: data },
-    };
+    const cityIndex = action.meta.arg.index
+    if (data) {
+      state.selected[cityIndex] = {
+        loading: false,
+        data: { ...state.selected[cityIndex].data, weather: data },
+        error: null
+      };
+    } else {
+      state.selected[cityIndex] = {
+        data: {...state.selected[cityIndex].data},
+        loading: false,
+        error: error.message || "unknown_error"
+      };
+    }
+    
   });
   builder.addCase(deleteCity, (state, action) => {
     state.selected.splice(action.payload, 1);
