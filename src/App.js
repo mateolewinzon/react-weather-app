@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import { Container } from "react-bootstrap";
 import CitiesWeather from "./components/CitiesWeather/CitiesWeather";
 import LocalWeather from "./components/LocalWeather/LocalWeather";

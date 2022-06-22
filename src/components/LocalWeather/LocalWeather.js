@@ -1,14 +1,14 @@
 import React, { useEffect } from "react";
 import { Alert, Row } from "react-bootstrap";
 import { useDispatch, useSelector } from "react-redux";
+import LoadingSpinner from "../common/LoadingSpinner";
+import CurrentWeatherBox from "./CurrentWeather";
+import Forecast from "./ForecastRow";
 import { fetchLocationCityName } from "../../actions/locationActions";
 import { fetchLocalWeather } from "../../actions/localWeatherActions";
 import { useLocation } from "../../hooks/useLocation";
 import { selectLocation } from "../../reducers/locationReducer";
 import { selectWeather } from "../../reducers/localWeatherReducer";
-import LoadingSpinner from "../common/LoadingSpinner";
-import CurrentWeatherBox from "./CurrentWeather";
-import Forecast from "./ForecastRow";
 import { ERROR_LOCAL_WEATHER } from "../../config/texts";
 
 const LocalWeather = () => {
