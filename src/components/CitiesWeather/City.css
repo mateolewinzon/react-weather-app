@@ -3,4 +3,7 @@
   text-align: center;
   background-color: #49aae2;
   min-height: 300px;
+  display: flex;
+  justify-content: center;
+  padding: 2px;
 }
