@@ -1,0 +1,31 @@
+{
+  "compilerOptions": {
+    "moduleResolution": "node",
+    "outDir": "./dist/",
+    "sourceMap": true,
+    "strictNullChecks": true,
+    "module": "es6",
+    "jsx": "react-jsx",
+    "target": "es5",
+    "allowJs": true,
+    "baseUrl": "src",
+    "typeRoots": ["./node_modules/@types"],
+    "isolatedModules": true,
+    "paths": {
+      "actions/*": ["actions/*"],
+      "app/*": ["app/*"],
+      "components/*": ["components/*"],
+      "config/*": ["config/*"],
+      "hooks/*": ["hooks/*"],
+      "mocks/*": ["mocks/*"],
+      "reducers/*": ["reducers/*"],
+      "services/*": ["services/*"],
+      "styles/*": ["styles/*"],
+      "test-utils/*": ["test-utils/*"],
+      "types/*": ["types/*"],
+      "utils/*": ["utils/*"]
+    }
+  },
+  "include": ["**/*.ts", "**/*.tsx"],
+  "exclude": ["node_modules"]
+}
